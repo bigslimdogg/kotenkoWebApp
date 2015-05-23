@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="kotenkoWeb:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="kotenko.web.war">
+      <element id="artifact" artifact-name="kotenkoWeb:war exploded" />
+    </root>
+  </artifact>
+</component>

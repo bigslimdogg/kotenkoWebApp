@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - kotenkonetwork@localhost" uuid="fd6e6e43-53f6-4206-bb7e-384dceee0450">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>kotenkonetwork.*</schema-pattern>
+      <default-schemas>kotenkonetwork.*</default-schemas>
+    </data-source>
+  </component>
+</project>
