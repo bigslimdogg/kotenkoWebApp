@@ -40,7 +40,7 @@ public class RouteServlet extends HttpServlet {
             element2 = modelDao.findElement(id2, net);
         } catch (SQLException e) {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/error.jsp");
-            dispatcher.forward(request, response);;
+            dispatcher.forward(request, response);
         }
         session.setAttribute("element1", element1);
         session.setAttribute("element2", element2);
