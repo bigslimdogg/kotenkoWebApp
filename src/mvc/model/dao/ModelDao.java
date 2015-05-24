@@ -419,6 +419,43 @@ public class ModelDao {
         rs.close();
         statement.close();
     }
-
-
+    public PathElement findElement(int id, Network net) throws SQLException, UnknownHostException {
+        preparedStatement = connection.prepareStatement("SELECT * FROM pc WHERE id_elem = ?;");
+        preparedStatement.setInt(1, id);
+        ResultSet rs = preparedStatement.executeQuery();
+        if(!rs.wasNull()){
+            return readPc(id,net);
+        }
+        preparedStatement = connection.prepareStatement("SELECT * FROM cable WHERE id_elem = ?;");
+        preparedStatement.setInt(1, id);
+        rs = preparedStatement.executeQuery();
+        if(!rs.wasNull()){
+            return readCable(id, net);
+        }
+        preparedStatement = connection.prepareStatement("SELECT * FROM firewall WHERE id_elem = ?;");
+        preparedStatement.setInt(1, id);
+        rs = preparedStatement.executeQuery();
+        if(!rs.wasNull()){
+            return readFirewall(id, net);
+        }
+        preparedStatement = connection.prepareStatement("SELECT * FROM hub WHERE id_elem = ?;");
+        preparedStatement.setInt(1, id);
+        rs = preparedStatement.executeQuery();
+        if(!rs.wasNull()){
+            return readHub(id, net);
+        }
+        preparedStatement = connection.prepareStatement("SELECT * FROM switch WHERE id_elem = ?;");
+        preparedStatement.setInt(1, id);
+        rs = preparedStatement.executeQuery();
+        if(!rs.wasNull()){
+            return readSwitch(id, net);
+        }
+        preparedStatement = connection.prepareStatement("SELECT * FROM route WHERE id_elem = ?;");
+        preparedStatement.setInt(1, id);
+        rs = preparedStatement.executeQuery();
+        if(!rs.wasNull()){
+            return readRoute(id, net);
+        }
+        return null;
+    }
 }

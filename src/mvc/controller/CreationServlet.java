@@ -30,15 +30,34 @@ public class CreationServlet extends javax.servlet.http.HttpServlet {
            switch (type) {
                case "pc":
                    modelDao.readPc(modelDao.createPc(), net);
-                   RequestDispatcher dispatcher = request.getRequestDispatcher("/test.jsp");
+                   RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
                    dispatcher.forward(request, response);
                    break;
                case "cable":
                    modelDao.readCable(modelDao.createCable(), net);
-                   dispatcher = request.getRequestDispatcher("/test.jsp");
+                   dispatcher = request.getRequestDispatcher("/index.jsp");
                    dispatcher.forward(request, response);
                    break;
-
+               case "firewall":
+                   modelDao.readFirewall(modelDao.createFirewall(), net);
+                   dispatcher = request.getRequestDispatcher("/index.jsp");
+                   dispatcher.forward(request, response);
+                   break;
+               case "hub":
+                   modelDao.readHub(modelDao.createHub(), net);
+                   dispatcher = request.getRequestDispatcher("/index.jsp");
+                   dispatcher.forward(request, response);
+                   break;
+               case "route":
+                   modelDao.readRoute(modelDao.createRoute(), net);
+                   dispatcher = request.getRequestDispatcher("/index.jsp");
+                   dispatcher.forward(request, response);
+                   break;
+               case "switch":
+                   modelDao.readSwitch(modelDao.createSwitch(), net);
+                   dispatcher = request.getRequestDispatcher("/index.jsp");
+                   dispatcher.forward(request, response);
+                   break;
                default:
                    dispatcher = request.getRequestDispatcher("/error.jsp");
                    dispatcher.forward(request, response);
@@ -47,6 +66,7 @@ public class CreationServlet extends javax.servlet.http.HttpServlet {
            }
 
        }catch (Exception e){
-           System.out.println(e);;}
+           RequestDispatcher dispatcher = request.getRequestDispatcher("/error.jsp");
+           dispatcher.forward(request, response);}
    }
 }

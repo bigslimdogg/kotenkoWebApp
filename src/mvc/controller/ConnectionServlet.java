@@ -35,17 +35,22 @@ public class ConnectionServlet extends HttpServlet {
             switch (command) {
                 case "disconnect":
                     connectionDao.deleteConnections(id1, id2);
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+                    dispatcher.forward(request, response);
                     break;
                 case "connect":
                     connectionDao.createConnection(id1, id2);
+                    dispatcher = request.getRequestDispatcher("/index.jsp");
+                    dispatcher.forward(request, response);
                     break;
                 default:
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/error.jsp");
+                    dispatcher = request.getRequestDispatcher("/error.jsp");
                     dispatcher.forward(request, response);
                     break;
             }
         }catch (Exception e){
-            System.out.println(e);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/error.jsp");
+            dispatcher.forward(request, response);;
         }
 
 

@@ -32,24 +32,36 @@ public class DeleteServlet extends HttpServlet {
         switch (type){
             case "pc":
                 modelDao.deletePc(id);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+                dispatcher.forward(request, response);
                 break;
             case "cable":
                 modelDao.deleteCable(id);
+                dispatcher = request.getRequestDispatcher("/index.jsp");
+                dispatcher.forward(request, response);
                 break;
             case "firewall":
                 modelDao.deleteFirewall(id);
+                dispatcher = request.getRequestDispatcher("/index.jsp");
+                dispatcher.forward(request, response);
                 break;
             case "hub":
                 modelDao.deleteHub(id);
+                dispatcher = request.getRequestDispatcher("/index.jsp");
+                dispatcher.forward(request, response);
                 break;
             case "route":
                 modelDao.deleteRoute(id);
+                dispatcher = request.getRequestDispatcher("/index.jsp");
+                dispatcher.forward(request, response);
                 break;
             case "switch":
                 modelDao.deleteSwitch(id);
+                dispatcher = request.getRequestDispatcher("/index.jsp");
+                dispatcher.forward(request, response);
                 break;
             default:
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/error.jsp");
+                dispatcher = request.getRequestDispatcher("/error.jsp");
                 dispatcher.forward(request, response);
                 break;
 

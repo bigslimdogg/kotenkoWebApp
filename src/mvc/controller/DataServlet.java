@@ -33,19 +33,26 @@ public class DataServlet extends HttpServlet {
             switch (type) {
                 case "cable_type":
                     dataDao.addTypeOfCable(attribute);
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+                    dispatcher.forward(request, response);
                     break;
                 case "ip":
                     dataDao.addIp(attribute);
+                    dispatcher = request.getRequestDispatcher("/index.jsp");
+                    dispatcher.forward(request, response);
                     break;
                 case "wrong_ips":
                     dataDao.addWrongIp(attribute);
+                    dispatcher = request.getRequestDispatcher("/index.jsp");
+                    dispatcher.forward(request, response);
                     break;
                 default:
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/error.jsp");
+                    dispatcher = request.getRequestDispatcher("/error.jsp");
                     dispatcher.forward(request, response);
             }
         }catch (SQLException e){
-            System.out.println(e);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/error.jsp");
+            dispatcher.forward(request, response);;
         }
     }
 }

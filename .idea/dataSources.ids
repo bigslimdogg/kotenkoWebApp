@@ -8,75 +8,80 @@
     <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
     <schema name="" catalog="kotenkonetwork"/>
     <table name="cable" schema="" catalog="kotenkonetwork" type="TABLE">
-      <column name="id_cable" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="id_elem" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="cable_type" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <foreign-key name="cable_ibfk_1" columns="id_cable" ref-table="pathelement" ref-schema="" ref-catalog="kotenkonetwork" ref-columns="id_elem" update-rule="3" delete-rule="3" deferrability="2"/>
-      <foreign-key name="cable_ibfk_2" columns="cable_type" ref-table="cable_type" ref-schema="" ref-catalog="kotenkonetwork" ref-columns="id_cable_type" update-rule="3" delete-rule="3" deferrability="2"/>
+      <column name="info" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="delay" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="price" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <primary-key name="PRIMARY" columns="id_elem"/>
+      <foreign-key name="cable_ibfk_1" columns="cable_type" ref-table="cable_type" ref-schema="" ref-catalog="kotenkonetwork" ref-columns="id_cable_type" update-rule="3" delete-rule="3" deferrability="2"/>
     </table>
     <table name="cable_type" schema="" catalog="kotenkonetwork" type="TABLE">
       <column name="id_cable_type" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="type_name" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="id_cable_type"/>
-      <exported-key name="cable_ibfk_2" table="cable" schema="" catalog="kotenkonetwork" columns="cable_type"/>
+      <exported-key name="cable_ibfk_1" table="cable" schema="" catalog="kotenkonetwork" columns="cable_type"/>
     </table>
     <table name="connections" schema="" catalog="kotenkonetwork" type="TABLE">
       <column name="id_con" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="first_elem" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="second_elem" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="id_con"/>
-      <foreign-key name="connections_ibfk_1" columns="first_elem" ref-table="pathelement" ref-schema="" ref-catalog="kotenkonetwork" ref-columns="id_elem" update-rule="3" delete-rule="3" deferrability="2"/>
-      <foreign-key name="connections_ibfk_2" columns="second_elem" ref-table="pathelement" ref-schema="" ref-catalog="kotenkonetwork" ref-columns="id_elem" update-rule="3" delete-rule="3" deferrability="2"/>
     </table>
     <table name="firewall" schema="" catalog="kotenkonetwork" type="TABLE">
-      <column name="id_firewall" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="id_elem" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="info" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="delay" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="price" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="ip" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="wrong_ip" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <foreign-key name="firewall_ibfk_1" columns="id_firewall" ref-table="pathelement" ref-schema="" ref-catalog="kotenkonetwork" ref-columns="id_elem" update-rule="3" delete-rule="3" deferrability="2"/>
-      <exported-key name="wrong_ip_ibfk_1" table="wrong_ip" schema="" catalog="kotenkonetwork" columns="id_wrong_ip"/>
+      <primary-key name="PRIMARY" columns="id_elem"/>
+      <foreign-key name="firewall_ibfk_1" columns="wrong_ip" ref-table="wrong_ip" ref-schema="" ref-catalog="kotenkonetwork" ref-columns="id_wrong_ip" update-rule="3" delete-rule="3" deferrability="2"/>
     </table>
     <table name="hub" schema="" catalog="kotenkonetwork" type="TABLE">
-      <column name="id_hub" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="id_elem" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="info" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="delay" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="price" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
       <column name="units" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <foreign-key name="hub_ibfk_1" columns="id_hub" ref-table="pathelement" ref-schema="" ref-catalog="kotenkonetwork" ref-columns="id_elem" update-rule="3" delete-rule="3" deferrability="2"/>
+      <primary-key name="PRIMARY" columns="id_elem"/>
     </table>
     <table name="ip" schema="" catalog="kotenkonetwork" type="TABLE">
       <column name="id_ip" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="ip_name" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ip_name" sqlType="CHAR" precision="12" scale="0" nullable="true" jdbcType="1"/>
       <primary-key name="PRIMARY" columns="id_ip"/>
     </table>
-    <table name="pathelement" schema="" catalog="kotenkonetwork" type="TABLE">
+    <table name="pc" schema="" catalog="kotenkonetwork" type="TABLE">
       <column name="id_elem" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="info" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
       <column name="delay" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
       <column name="price" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
       <column name="ip" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="id_elem"/>
-      <exported-key name="cable_ibfk_1" table="cable" schema="" catalog="kotenkonetwork" columns="id_cable"/>
-      <exported-key name="connections_ibfk_1" table="connections" schema="" catalog="kotenkonetwork" columns="first_elem"/>
-      <exported-key name="connections_ibfk_2" table="connections" schema="" catalog="kotenkonetwork" columns="second_elem"/>
-      <exported-key name="firewall_ibfk_1" table="firewall" schema="" catalog="kotenkonetwork" columns="id_firewall"/>
-      <exported-key name="hub_ibfk_1" table="hub" schema="" catalog="kotenkonetwork" columns="id_hub"/>
-      <exported-key name="pc_ibfk_1" table="pc" schema="" catalog="kotenkonetwork" columns="id_pc"/>
-      <exported-key name="route_ibfk_1" table="route" schema="" catalog="kotenkonetwork" columns="id_route"/>
-      <exported-key name="switch_ibfk_1" table="switch" schema="" catalog="kotenkonetwork" columns="id_switch"/>
-    </table>
-    <table name="pc" schema="" catalog="kotenkonetwork" type="TABLE">
-      <column name="id_pc" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <foreign-key name="pc_ibfk_1" columns="id_pc" ref-table="pathelement" ref-schema="" ref-catalog="kotenkonetwork" ref-columns="id_elem" update-rule="3" delete-rule="3" deferrability="2"/>
     </table>
     <table name="route" schema="" catalog="kotenkonetwork" type="TABLE">
-      <column name="id_route" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="id_elem" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="info" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="delay" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="price" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="ip" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="turned_on" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
-      <foreign-key name="route_ibfk_1" columns="id_route" ref-table="pathelement" ref-schema="" ref-catalog="kotenkonetwork" ref-columns="id_elem" update-rule="3" delete-rule="3" deferrability="2"/>
+      <primary-key name="PRIMARY" columns="id_elem"/>
     </table>
     <table name="switch" schema="" catalog="kotenkonetwork" type="TABLE">
-      <column name="id_switch" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="id_elem" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="info" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="delay" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="price" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="ip" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="units" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <foreign-key name="switch_ibfk_1" columns="id_switch" ref-table="pathelement" ref-schema="" ref-catalog="kotenkonetwork" ref-columns="id_elem" update-rule="3" delete-rule="3" deferrability="2"/>
+      <primary-key name="PRIMARY" columns="id_elem"/>
     </table>
     <table name="wrong_ip" schema="" catalog="kotenkonetwork" type="TABLE">
-      <column name="id_wrong_ip" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="ip_name" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
-      <foreign-key name="wrong_ip_ibfk_1" columns="id_wrong_ip" ref-table="firewall" ref-schema="" ref-catalog="kotenkonetwork" ref-columns="id_firewall" update-rule="3" delete-rule="3" deferrability="2"/>
+      <column name="id_wrong_ip" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="ip_name" sqlType="CHAR" precision="12" scale="0" nullable="true" jdbcType="1"/>
+      <primary-key name="PRIMARY" columns="id_wrong_ip"/>
+      <exported-key name="firewall_ibfk_1" table="firewall" schema="" catalog="kotenkonetwork" columns="wrong_ip"/>
     </table>
   </data-source>
 </component>
