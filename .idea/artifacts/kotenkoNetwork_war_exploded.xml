@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="kotenkoNetwork:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/kotenkoNetwork_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="kotenkoNetwork" />
+        </element>
+      </element>
+      <element id="library" level="project" name="jre1.8" />
+      <element id="javaee-facet-resources" facet="kotenkoNetwork/web/Web" />
+    </root>
+  </artifact>
+</component>
