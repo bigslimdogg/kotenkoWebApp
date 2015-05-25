@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
-public class RouteProviderWithLessTimeDelay implements RouteProvider {
+public class RouteProviderWithLessTimeDelay implements RouteProvider{
 
     @Override
     public void getDescription(PathElement el) {

@@ -27,7 +27,7 @@ public class DataDao {
     public void addTypeOfCable(String attribute) throws SQLException {
         if(attribute == null)
             throw new NullPointerException();
-        preparedStatement = connection.prepareStatement("INSERT INTO cable_type(type_name) VALUE (?);");
+        preparedStatement = connection.prepareStatement("INSERT INTO cable_type(type_name) VALUE(?);");
         preparedStatement.setString(1, attribute);
         preparedStatement.execute();
     }
@@ -41,7 +41,7 @@ public class DataDao {
     public void addWrongIp(String attribute) throws SQLException {
         if(attribute == null)
             throw new NullPointerException();
-        preparedStatement = connection.prepareStatement("INSERT INTO wrong_ip(ip_name) VALUE (?)");
+        preparedStatement = connection.prepareStatement("INSERT INTO wrong_ip(ip_name) VALUE(?)");
         preparedStatement.setString(1, attribute);
         preparedStatement.execute();
     }

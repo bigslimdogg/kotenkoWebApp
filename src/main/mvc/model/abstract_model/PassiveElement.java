@@ -10,7 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public abstract class PassiveElement implements PathElement {
+public abstract class PassiveElement implements PathElement{
     
     protected final double delay = 0;
     protected int id;

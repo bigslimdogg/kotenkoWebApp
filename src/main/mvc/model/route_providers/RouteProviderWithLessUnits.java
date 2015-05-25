@@ -18,7 +18,7 @@ import java.util.LinkedList;
  *
  * @author Nick
  */
-public class RouteProviderWithLessUnits implements RouteProvider {
+public class RouteProviderWithLessUnits implements RouteProvider{
 
     @Override
     public void getDescription(PathElement el) {
